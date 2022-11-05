@@ -1,8 +1,8 @@
-import pathlib
 import pandas as pd
 from nltk.tokenize import word_tokenize
 from collections import Counter, defaultdict
 from dictionnary import get_fin_sentiment_dic
+from tqdm import tqdm
 
 sentiment_dic = get_fin_sentiment_dic()
 SENTIMENTS = ['negative', 'positive', 'uncertainty',
@@ -54,10 +54,19 @@ def postprocess_sentiment(text_sentiment: defaultdict):
     return ans
 
 
-def measure_finance_sentiment(df):
+def measure_finance_sentiment(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Given a dataframe with a "text" column,
+    return the sentiment scores for the "text" 
+    attribute.
+    Input:
+        df: df to sentiment analyze
+    Output:
+        df: df with sentiment scores
+    """
     sentiments = []
     # Iterate over each text and analyze its sentiment
-    for i, row in df.iterrows():
+    for i, row in tqdm(df.iterrows()):
         text_sentiment = get_text_finance_sentiment(row['text'])
         text_sentiment = postprocess_sentiment(text_sentiment)
         # Merge sentiments scores to other row attributes
@@ -65,24 +74,3 @@ def measure_finance_sentiment(df):
         sentiments.append(row)
     df = pd.DataFrame(sentiments)
     return df
-
-
-def get_FOMC_dataset(file_name) -> pd.DataFrame:
-    """
-    Reads one of FOMC datasets.
-    Input:
-        file_name:
-    Output:
-        df
-    """
-    dir = pathlib.Path(__file__).parent.resolve()
-    df = pd.read_csv(dir/'datasets'/'FOMC'/file_name)
-    # Cleans up text from noise
-    df['text'] = df['contents'].apply(lambda x: x.replace(
-        '\n\n[SECTION]\n\n', '').replace('\n', ' ').replace('\r', ' ').strip())
-    return df
-
-
-if __name__ == "__main__":
-    df = get_FOMC_dataset('statement.csv')
-    df = measure_finance_sentiment(df)
