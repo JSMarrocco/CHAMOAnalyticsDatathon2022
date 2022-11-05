@@ -2,6 +2,8 @@ import pathlib
 import pandas as pd
 from pathlib import Path
 
+# TODO: There is one file that needed the str(x) in lambda function below. Check if it fucks something
+
 
 def get_FOMC_dataset(file_name) -> pd.DataFrame:
     """
