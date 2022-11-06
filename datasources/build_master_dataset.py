@@ -15,16 +15,15 @@ def save_to_csv(df, file_name="out.csv"):
 
 if __name__ == '__main__':
     crnt_dir = pathlib.Path(__file__).parent.resolve()
-    datasource_dir = crnt_dir/'datasources'
 
-    er_dir = datasource_dir/'exchange_rate'/'out'/'exchange_rates.csv'
-    sentiment_dir = datasource_dir/'sentiment'/'out'/'finance_sentiment_pp.csv'
-    ti_dir = datasource_dir/'technical_indicators'/'out'/'ti.csv'
-    indexes_dir = crnt_dir/'PCA'/'out'/'CA_indices.csv'
+    er_dir = crnt_dir/'exchange_rate'/'out'/'exchange_rates.csv'
+    sentiment_dir = crnt_dir/'sentiment'/'out'/'finance_sentiment_pp.csv'
+    ti_dir = crnt_dir/'technical_indicators'/'out'/'ti.csv'
+    # indexes_dir = crnt_dir/'PCA'/'out'/'CA_indices.csv'
 
     dfs = []
     final_df = pd.DataFrame({'date': []})
-    for file_path in [er_dir, sentiment_dir, ti_dir, indexes_dir]:
+    for file_path in [er_dir, sentiment_dir, ti_dir, ]:
         df = pd.read_csv(file_path)
         final_df = pd.merge(final_df, df, on='date', how='outer')
     # Sort them by date
