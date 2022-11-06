@@ -20,12 +20,17 @@ if __name__ == "__main__":
     crnt_dir = pathlib.Path(__file__).parent.resolve()
     for file_path in pathlib.Path(crnt_dir, 'in').iterdir():
         df = pd.read_csv(file_path)
-        dfs.append(df.filter(items=['Date', 'Open']))
+        dfs.append(df)
     df = pd.concat(dfs)
     df = df.drop_duplicates()
     # Sort them by date
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.sort_values(by='Date')
-    # Rename Open column name
+
+    # Save the csv
+    save_to_csv(df, file_name="exchange_rates_all.csv")
+
+    # Create a simplified csv
+    df = df.filter(items=['Date', 'Open'])
     df = df.rename(columns={'Date': 'date', 'Open': 'rate'})
     save_to_csv(df, file_name="exchange_rates.csv")
