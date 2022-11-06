@@ -21,11 +21,12 @@ if __name__ == '__main__':
     transformer_sentiment_dir = crnt_dir / \
         'sentiment_transformer'/'out'/'transformer_sentiment.csv'
     ti_dir = crnt_dir/'technical_indicators'/'out'/'ti.csv'
-    indexes_dir = crnt_dir/'indexes'/'out'/'CA_indices.csv'
+    can_indexes_dir = crnt_dir/'indexes'/'out'/'CA_indices.csv'
+    us_indexes_dir = crnt_dir/'indexes'/'in'/'US'/'US_Bank_Rate.csv'
 
     dfs = []
     final_df = pd.DataFrame({'date': []})
-    for file_path in [er_dir, fin_sentiment_dir, ti_dir, indexes_dir, transformer_sentiment_dir]:
+    for file_path in [er_dir, fin_sentiment_dir, ti_dir, can_indexes_dir, us_indexes_dir, transformer_sentiment_dir]:
         df = pd.read_csv(file_path)
         final_df = pd.merge(final_df, df, on='date', how='outer')
     # Sort them by date
