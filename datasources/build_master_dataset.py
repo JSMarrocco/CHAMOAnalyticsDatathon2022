@@ -1,5 +1,6 @@
 import pathlib
 import pandas as pd
+from post_process import rename_columns
 
 
 def save_to_csv(df, file_name="out.csv"):
@@ -32,4 +33,5 @@ if __name__ == '__main__':
     # Sort them by date
     final_df['date'] = pd.to_datetime(final_df.date)
     final_df = final_df.sort_values(by='date')
+    final_df = rename_columns(final_df)
     save_to_csv(final_df, file_name='master_dataset.csv')
