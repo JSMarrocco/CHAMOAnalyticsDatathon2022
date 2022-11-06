@@ -20,6 +20,7 @@ if __name__ == "__main__":
     crnt_dir = pathlib.Path(__file__).parent.resolve()
     er_df = pd.read_csv(crnt_dir/'in'/'exchange_rates_all.csv')
     df = {}
+    df['date'] = er_df['Date'].to_list()
     # Measure technical indicators
     df['rsi_14'] = ta.momentum.rsi(er_df['Open']).to_list()
     df['stochrsi_14'] = ta.momentum.StochRSIIndicator(
