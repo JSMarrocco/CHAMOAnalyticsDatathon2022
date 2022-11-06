@@ -9,13 +9,13 @@ def get_date(df, i):
     return datetime.date(*[int(d) for d in df.iloc[i]['date'].split('-')])
 
 
-if __name__ == '__main__':
+def post_process():
     crnt_dir = pathlib.Path(__file__).parent.resolve()
-    df = pd.read_csv(crnt_dir/'out'/'out.csv')
+    df = pd.read_csv(crnt_dir/'out'/'finance_sentiment.csv')
 
     crnt_date = get_date(df, 0)
     last_date = get_date(df, -1)
-    one_day = delta = datetime.timedelta(days=1)
+    one_day = datetime.timedelta(days=1)
 
     last_row = df.iloc[0].to_dict()
     df_t = []
@@ -40,4 +40,8 @@ if __name__ == '__main__':
         crnt_date += one_day
 
     df = pd.DataFrame(df_t)
-    save_to_csv(df, file_name='finance_sentiment.csv')
+    save_to_csv(df, file_name='finance_sentiment_pp.csv')
+
+
+if __name__ == '__main__':
+    post_process()

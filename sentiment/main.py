@@ -2,6 +2,7 @@ import pandas as pd
 
 from utils import load_datasets, save_to_csv
 from sentiment_analysis import measure_finance_sentiment, SENTIMENTS
+from post_processing import post_process
 
 
 def filter_columns(df):
@@ -22,7 +23,8 @@ def main():
     df['date'] = pd.to_datetime(df.date)
     df = df.sort_values(by='date')
     # Save to csv
-    save_to_csv(df)
+    save_to_csv(df, file_name='finance_sentiment.csv')
+    post_process()
 
 
 if __name__ == "__main__":

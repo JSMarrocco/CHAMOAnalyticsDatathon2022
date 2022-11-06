@@ -28,8 +28,8 @@ def load_datasets() -> list[pd.DataFrame]:
         dfs: a list of all datasets
     """
     dfs = []
-    file_names = ['meeting_script.csv', 'minutes.csv',
-                  'presconf_script.csv', 'speech.csv', 'statement.csv', 'testimony.csv']
+    file_names = ['minutes.csv', 'presconf_script.csv',
+                  'speech.csv', 'statement.csv', 'testimony.csv']
     for file_name in file_names:
         dfs.append(get_FOMC_dataset(file_name))
     return dfs
