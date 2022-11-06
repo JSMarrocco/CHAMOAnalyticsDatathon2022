@@ -14,6 +14,9 @@ This directory holds data coming from all datasources.
 # Master dataset datasheet
 - `date`: self-explanatory
 - `rate`: the USDCAD exchange rate (label) 
-- `uncertainty`,`litigious`,`strong_modal`,`weak_modal`,`constraining`,`optimistic`: sentiment analysis of FOMC using the Loughran-McDonald_MasterDictionary
--  `rsi_14`,`stochrsi_14`,`macd_12_26`,`adx_14`,`williams_%R`,`cci`,`atr`,`utlimate_oscillator`,`roc`: technical indicators (TI) measured on `exchange_rate`. See [link](https://github.com/bukosabino/ta) or [link](https://ca.investing.com/currencies/usd-cad-technical) for a description of these TIs. The numbers are simply the parameters used by the technical indicator (e.g. `rsi_14` uses a sliding window of 14 days)
-- `W.BCPI`,`W.BCNE`,`W.ENER`,`W.MTLS`,`W.FOPR`,`W.AGRI`,`W.FISH`,`WGTS.AGRI`,`WGTS.BRENT`,`WGTS.COAL`,`WGTS.FISH`,`WGTS.FOPR`,`WGTS.MTLS`,`WGTS.NATURALGAS`,`WGTS.WCC`,`WGTS.WTI`: indexes given by PolyFinances
+- prefix `sent_fin_us_`: The sentiment analysis done by finance dictionnary on US documents.
+- prefix `sent_bert_us_`: The sentiment analysis done by BERT on US documents.
+- prefix `ti_rate`: The technical indicators of USDCAD rate
+- prefix `interest_rate_can`: The interest rate for CAN
+- prefix `interest_rate_us`: The interest rate for US
+- prefix `index`: Some indexes given by PF ...
