@@ -25,4 +25,7 @@ if __name__ == '__main__':
     for file_path in [er_dir, sentiment_dir, ti_dir]:
         df = pd.read_csv(file_path)
         final_df = pd.merge(final_df, df, on='date', how='outer')
+    # Sort them by date
+    final_df['date'] = pd.to_datetime(final_df.date)
+    final_df = final_df.sort_values(by='date')
     save_to_csv(final_df, file_name='master_dataset.csv')
