@@ -35,7 +35,7 @@ def load_datasets() -> list[pd.DataFrame]:
     return dfs
 
 
-def save_to_csv(df):
+def save_to_csv(df, file_name="out.csv"):
     """
     Saves a dataframe in a csv with the name
     "out.csv" in "out" directory.
@@ -45,4 +45,4 @@ def save_to_csv(df):
     crnt_dir = pathlib.Path(__file__).parent.resolve()
     out_dir = crnt_dir/'out'
     out_dir.mkdir(parents=True, exist_ok=True)
-    df.to_csv(out_dir/'out.csv', index=False)
+    df.to_csv(out_dir/file_name, index=False)
