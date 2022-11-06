@@ -17,7 +17,7 @@ if __name__ == '__main__':
     crnt_dir = pathlib.Path(__file__).parent.resolve()
 
     er_dir = crnt_dir/'exchange_rate'/'out'/'exchange_rates.csv'
-    sentiment_dir = crnt_dir/'sentiment'/'out'/'finance_sentiment_pp.csv'
+    sentiment_dir = crnt_dir/'sentiment_fin_dic'/'out'/'finance_sentiment_pp.csv'
     ti_dir = crnt_dir/'technical_indicators'/'out'/'ti.csv'
     # indexes_dir = crnt_dir/'PCA'/'out'/'CA_indices.csv'
 
