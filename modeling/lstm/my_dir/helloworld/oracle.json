@@ -1,0 +1,1 @@
+{"ongoing_trials": {}, "hyperparameters": {"space": [{"class_name": "Int", "config": {"name": "units", "default": null, "conditions": [], "min_value": 1, "max_value": 3, "step": 1, "sampling": null}}], "values": {"units": 1}}, "seed": 42, "seed_state": 47, "tried_so_far": ["b740d68b7beb602665b80ce189019691", "39fe4c2ce0a63c323744fc32d356aad8", "9a2dfbc0b9726abb6fbfe1a4fbbc789c"]}
