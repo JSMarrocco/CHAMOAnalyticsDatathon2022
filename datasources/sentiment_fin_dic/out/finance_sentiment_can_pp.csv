@@ -1,4 +1,4 @@
-date,uncertainty,litigious,strong_modal,weak_modal,constraining,optimistic
+date,can_uncertainty,can_litigious,can_strong_modal,can_weak_modal,can_constraining,can_optimistic
 1995-05-15,47,6,6,13,12,-38
 1995-05-16,47,6,6,13,12,-38
 1995-05-17,47,6,6,13,12,-38
