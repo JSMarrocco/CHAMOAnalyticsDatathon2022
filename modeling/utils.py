@@ -41,8 +41,8 @@ def load_and_clean_master_dataset():
 
 def split_train_test_val(df):
     # Split train val test datasets
-    test_cutting_date = '2022-08-01'
-    val_cutting_date = '2022-05-01'
+    test_cutting_date = '2022-05-01'
+    val_cutting_date = '2022-02-01'
     df_train = df[df['date'] < val_cutting_date]
     df_val = df[(df['date'] >= val_cutting_date) &
                 (df['date'] < test_cutting_date)]
