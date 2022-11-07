@@ -6,12 +6,13 @@ from copy import deepcopy
 
 
 def get_date(df, i):
-    return datetime.date(*[int(d) for d in df.iloc[i]['date'].split('-')])
+    return datetime.date(*[int(d) for d in df.iloc[i]['date'].strftime('%Y-%m-%d').split('-')])
 
 
-def post_process():
-    crnt_dir = pathlib.Path(__file__).parent.resolve()
-    df = pd.read_csv(crnt_dir/'out'/'finance_sentiment.csv')
+def post_process(df=None, file_name='finance_sentiment_pp.csv'):
+    if df is None:
+        crnt_dir = pathlib.Path(__file__).parent.resolve()
+        df = pd.read_csv(crnt_dir/'out'/'finance_sentiment.csv')
 
     crnt_date = get_date(df, 0)
     last_date = get_date(df, -1)
@@ -40,7 +41,7 @@ def post_process():
         crnt_date += one_day
 
     df = pd.DataFrame(df_t)
-    save_to_csv(df, file_name='finance_sentiment_pp.csv')
+    save_to_csv(df, file_name=file_name)
 
 
 if __name__ == '__main__':

@@ -21,7 +21,13 @@ def get_FOMC_dataset(file_name) -> pd.DataFrame:
     return df
 
 
-def load_datasets() -> list[pd.DataFrame]:
+def get_CAN_dataset(file_name) -> pd.DataFrame:
+    dir = pathlib.Path(__file__).parent.resolve()
+    df = pd.read_csv(dir/'datasets'/'CAN'/file_name)
+    return df
+
+
+def load_FOMC_datasets() -> list[pd.DataFrame]:
     """
     Loads all text datasets
     Outputs:
@@ -32,6 +38,14 @@ def load_datasets() -> list[pd.DataFrame]:
                   'speech.csv', 'statement.csv', 'testimony.csv']
     for file_name in file_names:
         dfs.append(get_FOMC_dataset(file_name))
+    return dfs
+
+
+def load_CAN_datasets() -> list[pd.DataFrame]:
+    dfs = []
+    file_names = ['can_bank_statements.csv']
+    for file_name in file_names:
+        dfs.append(get_CAN_dataset(file_name))
     return dfs
 
 
