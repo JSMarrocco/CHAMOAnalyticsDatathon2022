@@ -4,7 +4,9 @@ import pathlib
 
 def rename_columns(df: pd.DataFrame):
     sent_fin_us_ = 'sent_fin_us_'
+    sent_fin_can = 'sent_fin_can_'
     sent_bert_us_ = 'sent_bert_us_'
+    sent_bert_can_ = 'sent_bert_can_'
     ti_rate = 'ti_rate_'
     interest_rate_can = 'interest_rate_can'
     interest_rate_us = 'interest_rate_us'
@@ -46,7 +48,15 @@ def rename_columns(df: pd.DataFrame):
         'WGTS.WTI': f'{index}WGTS.WTI',
         'us_bank_rate': interest_rate_us,
         'fin_sentiment': f'{sent_bert_us_}fin',
-        'gen_sentiment': f'{sent_bert_us_}gen'
+        'gen_sentiment': f'{sent_bert_us_}gen',
+        'can_uncertainty': f'{sent_fin_can}uncertainty',
+        'can_litigious': f'{sent_fin_can}litigious',
+        'can_strong_modal': f'{sent_fin_can}strong_modal',
+        'can_weak_modal': f'{sent_fin_can}weak_modal',
+        'can_constraining': f'{sent_fin_can}constraining',
+        'can_optimistic': f'{sent_fin_can}optimistic',
+        'can_fin_sentiment': f'{sent_bert_can_}fin_sentiment',
+        'can_gen_sentiment': f'{sent_bert_can_}gen_sentiment'
     })
 
 
